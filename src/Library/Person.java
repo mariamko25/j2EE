@@ -3,8 +3,7 @@ package Library;
 import javax.persistence.*;
 
 
-@Entity(name="Person")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public class Person 
 {
 	

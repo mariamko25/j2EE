@@ -12,7 +12,6 @@
 	  
 	  
 	  <class>Library.User</class>
-	  <class>Library.Person</class>
 	  <class>Library.Catalog</class>
 	  <class>Library.Borrow</class>
 	  <class>Library.Book</class>
