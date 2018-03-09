@@ -6,7 +6,8 @@ import javax.persistence.*;
 public class Book {
 	
 	@Id
-	@Column(name="BookID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "BookID", updatable = false, nullable = false)
 	int ID;
 	
 	@ManyToOne

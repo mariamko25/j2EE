@@ -6,7 +6,8 @@ import javax.persistence.*;
 public class Borrow {
 	
 	@Id
-	@Column(name="BorrowingID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "BorrowingID", updatable = false, nullable = false)
 	int Id;
 	
 	@ManyToOne

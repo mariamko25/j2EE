@@ -8,7 +8,8 @@ import javax.persistence.*;
 public class Catalog {
 	
 	@Id
-	@Column(name="CatalogID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "CatalogID", updatable = false, nullable = false)
 	int CatalogID;
 	
 	@OneToMany

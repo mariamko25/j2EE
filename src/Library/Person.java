@@ -4,14 +4,13 @@ import javax.persistence.*;
 
 
 @Entity(name="Person")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="PERSONTYPE", discriminatorType=DiscriminatorType.STRING,length=20)
-@DiscriminatorValue("PERSON")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Person 
 {
 	
 	@Id
-	@Column(name="PersonID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "PersonID", updatable = false, nullable = false)
 	int ID;
 	
 	@Column(name="Name")
@@ -25,6 +24,11 @@ public class Person
 	
 	@Column(name="Age")
 	String Age;
+	
+	Person()
+	{
+		
+	}
 	
 	
 }
