@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+/**
+ * 
+ * @author MariamKonate
+ * Class to display borrowed books
+ */
 @Entity(name="Borrow")
 public class Borrow implements Serializable{
 	
@@ -37,6 +42,17 @@ public class Borrow implements Serializable{
 		
 	}
 	
+	/**
+	 * Constructor to copy
+	 * @param B
+	 */
+	Borrow(Borrow B)
+	{
+		book=B.getBook();
+		user=B.getUser();
+		From=B.getFrom();
+		To=B.getTo();
+	}
 	
 	/**
 	 * 
