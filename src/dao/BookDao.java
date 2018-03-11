@@ -1,9 +1,6 @@
 package dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import Library.*;
 
 /**
@@ -13,12 +10,14 @@ import Library.*;
  */
 public class BookDao {
 	
+	EntityManager em;
 	/**
 	 * Constructor with no argument
+	 * @param Em 
 	 */
-	BookDao()
+	public BookDao(EntityManager Em)
 	{
-		
+		em=Em;
 	}
 	
 	/**
@@ -26,14 +25,12 @@ public class BookDao {
 	 */
 	void Create()
 	{
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("Bibliotheque");
-		EntityManager em = entityManagerFactory.createEntityManager();	
+		
 		Book b=new Book();
 		em.getTransaction().begin();
 		em.persist(b);
 		em.getTransaction().commit();
-		em.close();
-		entityManagerFactory.close();
+		
 	}
 	
 	/**
@@ -41,14 +38,12 @@ public class BookDao {
 	 */
 	void Create(Author A,String T)
 	{
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("Bibliotheque");
-		EntityManager em = entityManagerFactory.createEntityManager();	
+		
 		Book b=new Book(A,T);
 		em.getTransaction().begin();
 		em.persist(b);
 		em.getTransaction().commit();
-		em.close();
-		entityManagerFactory.close();
+		
 	}
 	
 	/**
@@ -58,13 +53,11 @@ public class BookDao {
 	 */
 	Book  Read(int id)
 	{
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("Bibliotheque");
-		EntityManager em = entityManagerFactory.createEntityManager();	
+		
 		em.getTransaction().begin();
 		Book b=em.find(Book.class,id);
 		em.getTransaction().commit();
-		em.close();
-		entityManagerFactory.close();
+		
 		return 	b;
 		
 	}
@@ -76,13 +69,9 @@ public class BookDao {
 	 */
 	void Update(Book b,boolean isBorrowed)
 	{
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("Bibliotheque");
-		EntityManager em = entityManagerFactory.createEntityManager();	
 		em.getTransaction().begin();
 		em.find(Book.class,b.getID()).setBorrowed(isBorrowed);;
 		em.getTransaction().commit();
-		em.close();
-		entityManagerFactory.close();
 	}
 	
 	/**
@@ -91,13 +80,18 @@ public class BookDao {
 	 */
 	void Delete(Book b)
 	{
-		EntityManagerFactory entityManagerFactory=Persistence.createEntityManagerFactory("Bibliotheque");
-		EntityManager em = entityManagerFactory.createEntityManager();	
+		
 		em.getTransaction().begin();
 		em.remove(b);
 		em.getTransaction().commit();
-		em.close();
-		entityManagerFactory.close();
+		
 	}
 
+	/**
+	 * close entityManager
+	 */
+	void closeEm()
+	{
+		em.close();
+	}
 }
