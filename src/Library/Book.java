@@ -46,6 +46,7 @@ public class Book implements Serializable {
 	/**
 	 * Constructor with no arguments
 	 */
+
 	public Book()
 	{
 		
@@ -55,6 +56,7 @@ public class Book implements Serializable {
 	 * Constructor to copy
 	 * @param B
 	 */
+
 	public Book(Book B)
 	{
 		Author=B.getAuthor();

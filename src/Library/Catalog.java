@@ -33,6 +33,7 @@ public class Catalog implements Serializable
 	/**
 	 * Constructor with no arguments
 	 */
+
 	public Catalog()
 	{
 		

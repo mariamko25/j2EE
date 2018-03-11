@@ -23,6 +23,7 @@ public class Author extends Person implements Serializable{
 	/**
 	 * Constructor with no arguments
 	 */
+
 	public Author()
 	{
 		super();
@@ -32,6 +33,7 @@ public class Author extends Person implements Serializable{
 	 * Constructor to copy
 	 * @param A
 	 */
+
 	public Author(Author A)
 	{
 		super(A);

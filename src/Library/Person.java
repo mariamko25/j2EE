@@ -51,16 +51,21 @@ public class Person implements Serializable
 	 * constructor to copy
 	 * @param p
 	 */
-	 Person(Person p)
-	 {
+
+	Person(Person p)
+	{
 		LName=p.getLName();
 		FName=p.getFName();
 		Phone_Number=p.getPhone_Number();
 		Email_Address=p.getEmail_Address();
 		Age=p.getAge();
-		
-	 }
+	}
 	
+	/**
+	 * constructor with two arguments
+	 * @param Fname
+	 * @param Lname
+	 */
 	 Person(String Fname,String Lname)
 	 {
 		LName=Lname;
@@ -82,6 +87,7 @@ public class Person implements Serializable
 	public String getFName() {
 		return FName;
 	}
+	
 
 	/**
 	 * 
