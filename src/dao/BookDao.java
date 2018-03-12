@@ -23,41 +23,23 @@ public class BookDao {
 	/**
 	 * Create a new Book with no arguments
 	 */
-	void Create()
+	public void Create(Book b)
 	{
 		
-		Book b=new Book();
-		em.getTransaction().begin();
 		em.persist(b);
-		em.getTransaction().commit();
 		
 	}
 	
-	/**
-	 * Create a new Author with two arguments
-	 */
-	void Create(Author A,String T)
-	{
-		
-		Book b=new Book(A,T);
-		em.getTransaction().begin();
-		em.persist(b);
-		em.getTransaction().commit();
-		
-	}
 	
 	/**
 	 * return a Book
 	 * @param id
 	 * @return b
 	 */
-	Book  Read(int id)
+	public Book  Read(int id)
 	{
 		
-		em.getTransaction().begin();
-		Book b=em.find(Book.class,id);
-		em.getTransaction().commit();
-		
+		Book b=em.find(Book.class,id);		
 		return 	b;
 		
 	}
@@ -67,30 +49,26 @@ public class BookDao {
 	 * @param b
 	 * @param isBorrowed
 	 */
-	void Update(Book b,boolean isBorrowed)
+	public void Update(Book b,boolean isBorrowed)
 	{
-		em.getTransaction().begin();
 		em.find(Book.class,b.getID()).setBorrowed(isBorrowed);;
-		em.getTransaction().commit();
 	}
 	
 	/**
 	 * delete a Book
 	 * @param b
 	 */
-	void Delete(Book b)
+	public void Delete(Book b)
 	{
 		
-		em.getTransaction().begin();
 		em.remove(b);
-		em.getTransaction().commit();
 		
 	}
 
 	/**
 	 * close entityManager
 	 */
-	void closeEm()
+	public void closeEm()
 	{
 		em.close();
 	}

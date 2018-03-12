@@ -24,42 +24,23 @@ public class UserDao {
 	/**
 	 * Create a new User with no arguments
 	 */
-	void Create()
+	public void Create(User u)
 	{
 		
-		User a=new User();
-		em.getTransaction().begin();
-		em.persist(a);
-		em.getTransaction().commit();
+		em.persist(u);
 		
 	}
 	
-	/**
-	 * Create a new User with two arguments
-	 * @param Fname
-	 * @param Lname
-	 */
-	public void Create(String Fname, String Lname)
-	{
-		
-		User a=new User(Fname,Lname);
-		em.getTransaction().begin();
-		em.persist(a);
-		em.getTransaction().commit();
-		
-	}
 	
 	/**
 	 * return a user
 	 * @param id
 	 * @return b
 	 */
-	User Read(int id)
+	public User Read(int id)
 	{
 		
-		em.getTransaction().begin();
 		User b=em.find(User.class,id);
-		em.getTransaction().commit();
 		return 	b;
 	}
 	
@@ -68,27 +49,23 @@ public class UserDao {
 	 * @param u
 	 * @param nbBook
 	 */
-	void Update(User u, int nbBorrowedBooks)
+	public void Update(User u, int nbBorrowedBooks)
 	{
-		em.getTransaction().begin();
 		em.find(User.class,u.getID()).setNbBorrowedBooks(nbBorrowedBooks);
-		em.getTransaction().commit();
 	}
 	
 	/**
 	 * delete a user 
 	 * @param a
 	 */
-	void Delete(User u)
+	public void Delete(User u)
 	{
-		em.getTransaction().begin();
 		em.remove(u);
-		em.getTransaction().commit();
 	}
 	/**
 	 * close entityManager
 	 */
-	void closeEm()
+	public void closeEm()
 	{
 		em.close();
 	}

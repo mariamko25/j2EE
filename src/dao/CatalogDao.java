@@ -23,41 +23,24 @@ public class CatalogDao {
 	/**
 	 * Create a new Catalog with no arguments
 	 */
-	void Create()
+	public void Create(Catalog c)
 	{
 		
-		Catalog b=new Catalog();
-		em.getTransaction().begin();
-		em.persist(b);
-		em.getTransaction().commit();
+		
+		em.persist(c);
 		
 	}
 	
-	/**
-	 * Create a new Catalog with one argument
-	 * @param d
-	 */
-	void Create(String d)
-	{
-		
-		Catalog c=new Catalog(d);
-		em.getTransaction().begin();
-		em.persist(c);
-		em.getTransaction().commit();
-		
-	}
 	
 	/**
 	 * return a catalog
 	 * @param id
 	 * @return c
 	 */
-	Catalog Read(int id)
+	public Catalog Read(int id)
 	{
 		
-		em.getTransaction().begin();
 		Catalog c=em.find(Catalog.class,id);
-		em.getTransaction().commit();
 		return 	c;
 	}
 	
@@ -66,27 +49,23 @@ public class CatalogDao {
 	 * @param b
 	 * @param c
 	 */
-	void Update(Catalog c,Book b)
+	public void Update(Catalog c,Book b)
 	{
-		em.getTransaction().begin();
 		em.find(Catalog.class,c.getCatalogID()).getBooks().add(b);
-		em.getTransaction().commit();
 	}
 	
 	/**
 	 * delete a catalog
 	 * @param c
 	 */
-	void Delete(Catalog c)
+	public void Delete(Catalog c)
 	{
-		em.getTransaction().begin();
 		em.remove(c);
-		em.getTransaction().commit();
 	}
 	/**
 	 * close entityManager
 	 */
-	void closeEm()
+	public void closeEm()
 	{
 		em.close();
 	}

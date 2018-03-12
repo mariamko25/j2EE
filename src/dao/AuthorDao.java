@@ -23,29 +23,12 @@ public class AuthorDao {
 	/**
 	 * Create a new Author with no arguments
 	 */
-	public void Create()
+	public void Create(Author a)
 	{
 		
-		Author a=new Author();
-		em.getTransaction().begin();
 		em.persist(a);
-		em.getTransaction().commit();
 	}
 	
-	/**
-	 * Create a new Author with two arguments
-	 * @param Fname
-	 * @param Lname
-	 */
-	public void Create(String Fname, String Lname)
-	{
-		
-		Author a=new Author(Fname,Lname);
-		em.getTransaction().begin();
-		em.persist(a);
-		em.getTransaction().commit();
-		
-	}
 	
 	
 	/**
@@ -56,9 +39,7 @@ public class AuthorDao {
 	public Author Read(int id)
 	{
 		
-		em.getTransaction().begin();
 		Author b=em.find(Author.class,id);
-		em.getTransaction().commit();
 		
 		return 	b;
 	}
@@ -68,12 +49,10 @@ public class AuthorDao {
 	 * @param a
 	 * @param nbBook
 	 */
-	void Update(Author a,int nbBook)
+	public void Update(Author a,int nbBook)
 	{
 		
-		em.getTransaction().begin();
 		em.find(Author.class,a.getID()).setNbBooks(nbBook);
-		em.getTransaction().commit();
 		
 	}
 	
@@ -81,12 +60,10 @@ public class AuthorDao {
 	 * delete an author 
 	 * @param a
 	 */
-	void Delete(Author a)
+	public void Delete(Author a)
 	{
 		
-		em.getTransaction().begin();
 		em.remove(a);
-		em.getTransaction().commit();
 		
 	}
 	
